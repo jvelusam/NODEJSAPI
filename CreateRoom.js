@@ -116,19 +116,23 @@ app.get("/books/:id", async function (req, res) {
   res.send(book);
 });
 
-app.get("/GetRoomDetails/:RoomNo", async function (req, res) {
+app.get("/GetRoomDetails", async function (req, res) {
   const { RoomNo } = req.params;
 
   console.log(req.params, RoomNo);
   const book = await client
     .db("NodeJSAPI")
     .collection("CreateRoom")
-    .findOne({ RoomNo: "1" });
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      db.close();
+    });
   res.send(book);
 });
 
-app.put("/create/update", function (req, res)
-{
+app.put("/create/update", function (req, res) {
   res.send("Hello World");
 });
 
