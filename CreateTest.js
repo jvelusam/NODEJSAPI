@@ -62,7 +62,8 @@ app.delete("/create/delete", function (req, res) {
   res.send("Hello World");
 });
 
-app.post("/create/delete", function (req, res) {
+app.post("/create/delete", function (req, res)
+{
   res.send("Hello World");
 });
 
