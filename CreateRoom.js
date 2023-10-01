@@ -121,15 +121,16 @@ app.get("/GetRoomDetails", async function (req, res) {
 
   console.log(req.params, RoomNo);
   const book = await client
-    .db("NodeJSAPI")
-    .collection("CreateRoom")
+    .db("Products")
+    .collection("UserInfo")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
       console.log(result);
-      db.close();
+      client.close();
     });
   res.send(book);
+  console.log(book)
 });
 
 app.put("/create/update", function (req, res) {
